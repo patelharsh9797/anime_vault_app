@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { MotionDiv } from "./FramerMotion";
+import Link from "next/link";
 
 export interface AnimeProp {
   id: string;
@@ -31,21 +32,21 @@ function AnimeCard({ anime, index }: Prop) {
       animate="visible"
       transition={{ delay: index * 0.25, ease: "easeInOut", duration: 0.5 }}
       viewport={{ amount: 0.25 }}
-      className="max-w-sm rounded relative w-full cursor-pointer"
+      className="max-w-sm rounded relative w-full "
     >
-      <div>
-        <div className="relative w-full min-h-[20rem]">
+      <Link href={`/animes/${anime.id}`} className="cursor-pointer group">
+        <div className="relative rounded-xl w-full shadow-md min-h-[20rem] overflow-hidden group-hover:shadow-[#ff5956] transition-all duration-300">
           <Image
             src={`https://shikimori.one${anime.image.original}`}
             alt={anime.name}
             fill
             sizes="100%"
-            className="rounded-xl"
+            className=""
           />
         </div>
         <div className="py-4 flex flex-col gap-3">
           <div className="flex justify-between items-center gap-1">
-            <h2 className="font-bold text-white text-xl line-clamp-1 w-full">
+            <h2 className="font-bold text-white text-xl line-clamp-1 w-full group-hover:text-[#ff5956] transition-colors duration-300">
               {anime.name}
             </h2>
             <div className="py-1 px-2 bg-[#161921] rounded-sm">
@@ -81,7 +82,7 @@ function AnimeCard({ anime, index }: Prop) {
             </div>
           </div>
         </div>
-      </div>
+      </Link>
     </MotionDiv>
   );
 }

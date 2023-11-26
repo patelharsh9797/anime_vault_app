@@ -1,9 +1,8 @@
 "use client";
-import Image from "next/image";
-import { useState, useEffect } from "react";
-import { useInView } from "react-intersection-observer";
-import AnimeCard, { AnimeProp } from "./AnimeCard";
 import { fetchAnime } from "@/app/action";
+import Image from "next/image";
+import { useEffect, useState } from "react";
+import { useInView } from "react-intersection-observer";
 
 let page = 2;
 
@@ -11,12 +10,12 @@ type AnimeCardJSX = JSX.Element;
 
 function LoadMore() {
   const { ref, inView } = useInView();
-  const [data, setdata] = useState<AnimeCardJSX[]>([]);
+  const [data, setData] = useState<AnimeCardJSX[]>([]);
 
   useEffect(() => {
     if (inView) {
       fetchAnime(page).then((res) => {
-        setdata((prev) => [...prev, ...res]);
+        setData((prev) => [...prev, ...res]);
         page++;
       });
     }
