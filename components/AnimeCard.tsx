@@ -25,6 +25,7 @@ function AnimeCard({ anime }: Prop) {
           src={`https://shikimori.one${anime.image.original}`}
           alt={anime.name}
           fill
+          sizes="100%"
           className="rounded-xl"
         />
       </div>
