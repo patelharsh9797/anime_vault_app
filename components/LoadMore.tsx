@@ -39,6 +39,7 @@ function LoadMore() {
           />
         </div>
       </section>
+      <div className="py-4" />
     </>
   );
 }
