@@ -8,7 +8,7 @@ function Footer() {
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.25, ease: "easeInOut", duration: 0.5 }}
-      className=" fixed z-50 bottom-0 max-w-7xl mx-auto w-full sm:px-16 py-4 px-8 flex justify-between items-center gap-2 flex-wrap bg-[#161921]"
+      className="fixed z-50 bottom-0 max-w-7xl mx-auto w-full sm:px-16 py-4 px-8 flex flex-col md:flex-row justify-between items-center gap-4 flex-wrap bg-[#161921]"
     >
       <p className="text-base font-bold text-white">
         {`@${new Date().getFullYear()} EpicAnimeVault`}

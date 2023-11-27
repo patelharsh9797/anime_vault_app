@@ -26,6 +26,7 @@ export const fetchAnimeDetails = async (id: string) => {
   return {
     id: data.id,
     name: data.name,
+    kind: data.kind,
     image: data.image,
     description: data.description,
     episodes: data.episodes,

@@ -13,6 +13,13 @@ body {
   -webkit-text-fill-color: transparent;
 }
 
+.red-gradient2 {
+  background: linear-gradient(92deg, #ff5956 5%, #ee1e38 96.18%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 :root {
   color-scheme: dark;
 }
