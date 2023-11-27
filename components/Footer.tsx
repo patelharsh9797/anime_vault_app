@@ -35,7 +35,11 @@ function Footer() {
           height={19}
           className="w-auto object-contain"
         /> */}
-        <Link href="/das" target="_blank" className="hover:opacity-80">
+        <Link
+          href="https://github.com/patelharsh9797/anime_vault_app"
+          target="_blank"
+          className="hover:opacity-80"
+        >
           <Image
             src="/github.svg"
             alt="logo"
@@ -44,7 +48,7 @@ function Footer() {
             className="w-[28px] object-contain"
           />
         </Link>
-        <Link href="/das" target="_blank" className="hover:opacity-80">
+        <Link href="/" target="_blank" className="hover:opacity-80">
           <Image
             src="/twitter.svg"
             alt="logo"
