@@ -1,9 +1,5 @@
 import { fetchAnimeDetails } from "@/app/action";
-import {
-  MotionDiv,
-  MotionH2,
-  AnimatePresence,
-} from "@/components/FramerMotion";
+import { MotionDiv, MotionH2 } from "@/components/FramerMotion";
 import Link from "next/link";
 import { Metadata } from "next";
 import Image from "next/image";
