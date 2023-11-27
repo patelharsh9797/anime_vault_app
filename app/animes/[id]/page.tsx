@@ -1,5 +1,9 @@
 import { fetchAnimeDetails } from "@/app/action";
-import { MotionDiv, MotionH2 } from "@/components/FramerMotion";
+import {
+  MotionDiv,
+  MotionH2,
+  AnimatePresence,
+} from "@/components/FramerMotion";
 import Link from "next/link";
 import { Metadata } from "next";
 import Image from "next/image";
@@ -94,7 +98,7 @@ export default async function AnimeDetailPage({
 
       <MotionDiv className="grid md:grid-cols-2 gap-8">
         {data.screenshots.map((screenshot, index) => (
-          <div key={`${data.name}-${index + 1}`} className="">
+          <div key={`${data.name}-${index + 1}`} className="max-h-[30rem]">
             <Image
               src={`https://shikimori.one${screenshot.original}`}
               alt={`${data.name}-${index + 1}`}

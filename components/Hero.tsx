@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { MotionHeader } from "./FramerMotion";
+import { navVariants } from "@/utils/motion";
 
 function Hero() {
   const pathname = usePathname();
@@ -10,9 +11,12 @@ function Hero() {
 
   return (
     <MotionHeader
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ delay: 0.25, ease: "easeInOut", duration: 0.5 }}
+      variants={navVariants}
+      initial="hidden"
+      animate="show"
+      // initial={{ opacity: 0 }}
+      // animate={{ opacity: 1 }}
+      // transition={{ delay: 0.25, ease: "easeInOut", duration: 0.5 }}
       className="bg-hero bg-center bg-cover bg-no-repeat sm:p-16 py-16 px-8 flex justify-center lg:items-center max-lg:flex-col w-full sm:gap-16 gap-0"
     >
       <div className="flex-1 flex flex-col gap-10">
