@@ -9,6 +9,7 @@ import "./globals.css";
 const dmSans = DM_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.SERVER_URL!),
   title: {
     template: "%s | Anime Vault",
     default: "Anime Vault",

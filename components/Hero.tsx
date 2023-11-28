@@ -18,11 +18,15 @@ function Hero() {
 
   return (
     <MotionHeader
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1, height: bounds.height }}
-      transition={{
-        ease: [0.32, 0.72, 0, 1],
-        duration: 1,
+      initial={navVariants.hidden}
+      // @ts-ignore
+      animate={{
+        ...navVariants.show,
+        height: bounds.height > 0 ? bounds.height : null,
+        transition: {
+          ease: [0.32, 0.72, 0, 1],
+          duration: 1,
+        },
       }}
       className="bg-hero bg-center bg-cover bg-no-repeat w-full"
     >
@@ -33,7 +37,7 @@ function Hero() {
             alt="logo"
             width={101}
             height={96}
-            className="object-contain"
+            className="h-auto object-contain"
           />
         </Link>
         <div className="flex flex-col lg:flex-row justify-center lg:items-center gap-16 lg:gap-0">

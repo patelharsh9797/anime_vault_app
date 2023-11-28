@@ -31,11 +31,11 @@ export default async function AnimeDetailPage({
     <div className="sm:p-16 py-16 px-8 flex flex-col gap-10">
       <MotionDiv className="grid md:grid-cols-2 gap-8">
         <div className="flex flex-col gap-4 items-start justify-start">
-          <MotionH2 className="text-3xl md:text-5xl text-white font-bold red-gradient leading-[120%]">
+          <MotionH2 className="leading-[120%] text-3xl md:text-5xl text-white font-bold red-gradient">
             {data.name}
           </MotionH2>
 
-          <p className="text-sm -mt-4">{data.released_on}</p>
+          <p className="text-sm -mt-2">{data.released_on}</p>
 
           <div className="flex gap-4 items-center">
             <p className="inline-block py-1 px-2 bg-[#161921] rounded-md text-white text-sm font-bold capitalize">
@@ -103,7 +103,7 @@ export default async function AnimeDetailPage({
               priority
               objectFit="cover"
               objectPosition="center"
-              className="w-full h-full rounded-xl shadow-md"
+              className="w-full h-auto rounded-xl shadow-md"
             />
           </div>
         ))}

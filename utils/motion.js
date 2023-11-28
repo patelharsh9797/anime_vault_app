@@ -11,7 +11,6 @@ export const navVariants = {
   show: {
     opacity: 1,
     y: 0,
-    height: "auto",
     transition: {
       type: "spring",
       stiffness: 80,
