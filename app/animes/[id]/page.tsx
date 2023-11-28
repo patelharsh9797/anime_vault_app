@@ -1,8 +1,15 @@
 import { fetchAnimeDetails } from "@/app/action";
-import { MotionDiv, MotionH2 } from "@/components/FramerMotion";
+import {
+  MotionStaggerDiv,
+  MotionDiv,
+  MotionH2,
+  MotionP,
+} from "@/components/FramerMotion";
+import { fadeIn } from "@/utils/motion";
 import Link from "next/link";
 import { Metadata } from "next";
 import Image from "next/image";
+import { TypingText } from "@/components/CustomText";
 
 type AnimeDetailPageProps = {
   params: { id: string };
@@ -28,23 +35,47 @@ export default async function AnimeDetailPage({
   const data = await fetchAnimeDetails(id);
 
   return (
-    <div className="sm:p-16 py-16 px-8 flex flex-col gap-10">
-      <MotionDiv className="grid md:grid-cols-2 gap-8">
+    <MotionStaggerDiv className="sm:p-16 py-16 px-8 flex flex-col gap-10">
+      <div className="grid md:grid-cols-2 gap-8">
         <div className="flex flex-col gap-4 items-start justify-start">
-          <MotionH2 className="leading-[120%] text-3xl md:text-5xl text-white font-bold red-gradient">
-            {data.name}
-          </MotionH2>
+          <h2>
+            <span className="sr-only">{data.name}</span>
+            <TypingText
+              title={data.name}
+              textStyles="leading-[120%] text-3xl md:text-5xl text-white font-bold red-gradient"
+            />
+          </h2>
 
-          <p className="text-sm -mt-2">{data.released_on}</p>
+          <MotionP
+            variants={fadeIn("up", 25, "tween", 0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.25 }}
+            className="text-sm -mt-2"
+          >
+            {data.released_on}
+          </MotionP>
 
-          <div className="flex gap-4 items-center">
+          <MotionDiv
+            variants={fadeIn("up", 25, "tween", 0.2)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.25 }}
+            className="flex gap-4 items-center"
+          >
             <p className="inline-block py-1 px-2 bg-[#161921] rounded-md text-white text-sm font-bold capitalize">
               {data.kind}
             </p>
             <p className="text-xl font-semibold capitalize">{data.status}</p>
-          </div>
+          </MotionDiv>
 
-          <div className="flex gap-4 items-center">
+          <MotionDiv
+            variants={fadeIn("up", 25, "tween", 0.3)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.25 }}
+            className="flex gap-4 items-center"
+          >
             <div className="flex flex-row gap-2 items-center">
               <Image
                 src="/episodes.svg"
@@ -65,19 +96,31 @@ export default async function AnimeDetailPage({
               />
               <p className="text-base font-bold text-[#FFAD49]">{data.score}</p>
             </div>
-          </div>
-
-          <Link
-            href={`https://shikimori.one${data.url}`}
-            className="underline underline-offset-2 text-[#ff5956] hover:opacity-75 font-semibold"
+          </MotionDiv>
+          <MotionDiv
+            variants={fadeIn("up", 25, "tween", 0.4)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.25 }}
           >
-            More
-          </Link>
-
-          <h3>{data.description}</h3>
+            <h3 className="mb-4">{data.description}</h3>
+            <Link
+              href={`https://shikimori.one${data.url}`}
+              target="_blank"
+              className="underline underline-offset-2 text-[#ff5956] hover:opacity-75 font-semibold"
+            >
+              More
+            </Link>
+          </MotionDiv>
         </div>
 
-        <div className="flex items-start justify-center">
+        <MotionDiv
+          variants={fadeIn("left", 50, "tween", 0.1, 0.75)}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.25 }}
+          className="flex items-start justify-center"
+        >
           <Image
             src={`https://shikimori.one${data.image.original}`}
             alt={data.name}
@@ -88,13 +131,20 @@ export default async function AnimeDetailPage({
             objectPosition="center"
             className="shadow-md rounded-xl"
           />
-        </div>
-      </MotionDiv>
+        </MotionDiv>
+      </div>
       <div className="pb-8" />
 
       <MotionDiv className="grid md:grid-cols-2 gap-8">
         {data.screenshots.map((screenshot, index) => (
-          <div key={`${data.name}-${index + 1}`} className="max-h-[30rem]">
+          <MotionDiv
+            variants={fadeIn("right", undefined, "tween", index * 0.25, 1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.25 }}
+            key={`${data.name}-${index + 1}`}
+            className="max-h-[30rem]"
+          >
             <Image
               src={`https://shikimori.one${screenshot.original}`}
               alt={`${data.name}-${index + 1}`}
@@ -105,10 +155,10 @@ export default async function AnimeDetailPage({
               objectPosition="center"
               className="w-full h-auto rounded-xl shadow-md"
             />
-          </div>
+          </MotionDiv>
         ))}
       </MotionDiv>
       <div className="pb-32 md:pb-16" />
-    </div>
+    </MotionStaggerDiv>
   );
 }
